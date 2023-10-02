@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           elevation: 0.2,
           title: const Text("Gadget Express"),
         ),
-        body:   MyStatefulWidget(cartManager: cartManager,),
+        body:   MyStatefulWidget(cartManager: cartManager),
       ),
     );
   }

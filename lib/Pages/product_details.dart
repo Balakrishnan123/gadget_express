@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:gadget_express/components/cart_provider.dart';
 import 'package:provider/provider.dart';
@@ -261,13 +262,15 @@ class SimilarProducts extends StatefulWidget {
 }
 
 class _SimilarProductsState extends State<SimilarProducts> {
+  final DatabaseReference databaseReference =
+  FirebaseDatabase.instance.ref().child('/product_list');
   var product_list = [
 
     {
       "name": "HP Chromebook",
       "picture": "Images/devices/l2.jpg",
-      "old_price": 830000,
-      "price": 670000,
+      "old_price": 83000,
+      "price": 67000,
     },
     {
       "name": "Iphone 12",

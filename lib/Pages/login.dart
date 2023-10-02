@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:gadget_express/Pages/registration.dart';
 import 'package:gadget_express/components/cart_provider.dart';
 import 'package:gadget_express/home.dart';
 
@@ -45,7 +47,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             Container(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                key: Key('username_field'),
+                key: const Key('username_field'),
                 controller: nameController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -78,19 +80,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   key: const Key('login_button'),
                   child: const Text('Login'),
                   onPressed: () {
-                    print(nameController.text);
-                    print(passwordController.text);
-                    final isValidLogin = validateLogin();
-                    if (isValidLogin) {
-                      Navigator.push(
+                    final enteredUsername = nameController.text;
+                    final enteredPassword = passwordController.text;
+
+                    isValidLogin(enteredUsername: enteredUsername, enteredPassword: enteredPassword)
+                        .then((isValid) {
+                      if (isValid) {
+                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HomePage(cartManager: widget.cartManager,)));
-                    } else {
-                      showErrorDialog(context, 'Invalid username or password');
-                    }
-                  }
-              ),
+                            builder: (context) => HomePage(cartManager: widget.cartManager),
+                          ),
+                        );
+                      } else {
+                        showErrorDialog(context, 'Invalid username or password');
+                      }
+                    });
+                        }),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -103,6 +109,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   onPressed: () {
                     //signup screen
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => RegistrationPage()),
+                    );
                   },
                 )
               ],
@@ -118,6 +128,21 @@ bool validateLogin() {
   final enteredUsername = (find.byKey(Key('username_field')).evaluate().first.widget as TextField).controller?.text;
   final enteredPassword = (find.byKey(Key('password_field')).evaluate().first.widget as TextField).controller?.text;
   return (enteredUsername == username && enteredPassword == password);
+}
+Future<bool> isValidLogin({required String enteredUsername, required String enteredPassword}) {
+  // Query Firestore to check if the entered username and password match any user record
+  final usersCollection = FirebaseFirestore.instance.collection('User');
+
+  return usersCollection
+      .where('Name', isEqualTo: enteredUsername)
+      .where('Password', isEqualTo: enteredPassword)
+      .get()
+      .then((querySnapshot) {
+    return querySnapshot.docs.isNotEmpty;
+  }).catchError((error) {
+    print("Error querying Firestore: $error");
+    return false;
+  });
 }
 void showErrorDialog(BuildContext context, String message) {
   showDialog(

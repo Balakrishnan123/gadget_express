@@ -32,8 +32,8 @@ class _ProductsState extends State<Products> {
     {
       "name": "HP Chromebook",
       "picture": "Images/devices/l2.jpg",
-      "old_price": 830000,
-      "price": 670000,
+      "old_price": 83000,
+      "price": 67000,
       "prod_cat":"Laptop"
     },
     {
