@@ -1,18 +1,20 @@
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 //custom import
 import 'package:gadget_express/components/horizontal_list.dart';
 import 'package:gadget_express/Components/products.dart';
 import 'package:gadget_express/Pages/cart.dart';
-import 'package:gadget_express/Pages/login.dart';
-
 import 'package:gadget_express/components/cart_provider.dart';
+
+import 'package:gadget_express/pages/messages.dart';
+
 
 class HomePage extends StatelessWidget {
   final CartManager? cartManager;
+   late DialogFlowtter dialogFlowtter;
 
-
-   const HomePage({super.key, required this.cartManager});
+     HomePage({super.key, required this.cartManager});
 
 
   @override
@@ -51,7 +53,7 @@ class HomePage extends StatelessWidget {
           child: ListView(
         children:  <Widget>[
           UserAccountsDrawerHeader(
-              accountName: const Text("Balakrishnan V"),
+              accountName:  const Text("Balakrishnan"),
               accountEmail: const Text("adithyavbk@gmail.com"),
           currentAccountPicture: GestureDetector(
             child: const CircleAvatar(
@@ -119,7 +121,10 @@ class HomePage extends StatelessWidget {
                 title: const Text('Chatbot Assistance'),
                 leading: const Icon(Icons.chat, color: Colors.blue),
               onTap: () {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Chatbot(),),
+                );
                 }
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../Pages/product_details.dart';
 import 'package:gadget_express/components/cart_provider.dart';
@@ -16,73 +17,45 @@ class Products extends StatefulWidget {
 
 
 class _ProductsState extends State<Products> {
- // void _addToCart(Map<String, dynamic> product) {
-    // Add the product to the cart using cartManager
-  //  widget.cartManager.addToCart(product);
- // }
- 
-  var product_list = [
-    {
-      "name": "Lenovo Ideapad",
-      "picture": "Images/devices/145g.jpg",
-      "old_price": 80000,
-      "price": 65000,
-      "prod_cat":"Laptop"
-    },
-    {
-      "name": "HP Chromebook",
-      "picture": "Images/devices/l2.jpg",
-      "old_price": 83000,
-      "price": 67000,
-      "prod_cat":"Laptop"
-    },
-    {
-      "name": "Iphone 12",
-      "picture": "Images/devices/p1.jpg",
-      "old_price": 50000,
-      "price": 39999,
-      "prod_cat":"Phone"
-    },
-    {
-      "name": "Samsung Galaxy",
-      "picture": "Images/devices/p2.jpg",
-      "old_price": 35000,
-      "price": 29999,
-      "prod_cat":"Phone"
-    },
-    {
-      "name": "Lenovo Ideapad",
-      "picture": "Images/devices/145g.jpg",
-      "old_price": 100,
-      "price": 80,
-      "prod_cat":"Laptop"
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        itemCount: product_list.length,
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+    return StreamBuilder<QuerySnapshot>(
+      stream: FirebaseFirestore.instance.collection('products').snapshots(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+        if (snapshot.hasError) {
+          return Text('Error: ${snapshot.error}');
+        }
 
-        itemBuilder: (BuildContext context, int index) {
-          return Single_Prod(
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator(); // Loading indicator
+        }
+
+        final products = snapshot.data!.docs;
+
+        return GridView.builder(
+          itemCount: products.length,
+          gridDelegate:
+          const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          itemBuilder: (BuildContext context, int index) {
+            final productData = products[index].data() as Map<String, dynamic>;
+
+            return Single_Prod(
               cartManager: widget.cartManager,
-prod_name: product_list[index]['name'],
-prod_pictures: product_list[index]['picture'],
-prod_old_price: product_list[index]['old_price'],
-prod_price: product_list[index]['price'],
-prod_cat: product_list[index]['category'],
-addToCart: (product) {
-// Add the product to the cart using cartManager
-widget.cartManager?.addToCart(product);
-},
-index: index,);
-
-
-}
-);
+              prod_name: productData['name'],
+              prod_pictures: productData['picture'],
+              prod_old_price: productData['old_price'],
+              prod_price: productData['price'],
+              prod_cat: productData['category'],
+              addToCart: (product) {
+                widget.cartManager?.addToCart(product);
+              },
+              index: index,
+            );
+          },
+        );
+      },
+    );
 }
 }
 
@@ -119,7 +92,6 @@ class Single_Prod extends StatelessWidget {
                   return Consumer<CartManager>(
                     builder: (context, cartManager, child) {
                       return ProductDetails(
-                        // Pass the product details and cartManager
                         prod_detail_name: prod_name,
                         prod_detail_picture: prod_pictures,
                         prod_detail_old_price: prod_old_price,

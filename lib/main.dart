@@ -10,10 +10,10 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   runApp(
-     ChangeNotifierProvider(
-          create: (context) => CartManager(),
-          child:  const MyApp(),// Create an instance of CartManager
-        ),
+    ChangeNotifierProvider(
+      create: (context) => CartManager(),
+      child:  const MyApp(),// Create an instance of CartManager
+    ),
   );
 
   await Firebase.initializeApp(
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
 
 
-   const MyApp({super.key, this.cartManager});
+  const MyApp({super.key, this.cartManager});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           elevation: 0.2,
           title: const Text("Gadget Express"),
         ),
-        body:   MyStatefulWidget(cartManager: cartManager),
+        body:   MyStatefulWidget(cartManager: cartManager,),
       ),
     );
   }

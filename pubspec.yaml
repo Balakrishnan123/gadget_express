@@ -44,6 +44,10 @@ dependencies:
   google_sign_in: ^6.1.4
   shared_preferences: ^2.2.0
   fluttertoast: ^8.2.2
+  http: ^0.13.6
+  googleapis: ^11.4.0
+  dialog_flowtter: ^0.3.3
+  uuid: ^4.1.0
 
 
 dev_dependencies:
@@ -87,6 +91,7 @@ flutter:
     - Images/devices/l2.jpg
     - Images/devices/p1.jpg
     - Images/devices/p2.jpg
+    - assets/dialog_flow_auth.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "gadgetexpressbot-sdn9",
+  "private_key_id": "9f5056b8fababbc988319523211af846dae4c8fc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCssUZ3I3z3axRw\nyu2DCnjWzBHrkPF3fhnqj8sjDY+KL4ibDzxzrZiOw9Avi+K2rlaYyy9Z/WqWoGOS\n8MwphCjcYSMsdG0AKpE0ox0DAXIsDRtXuOnnKKV91uIuzuuv88lg5yceuF73dzTa\n/fBppivveVvqNrtq1Fv0KSxUur+2zLrRlfvIKnxARwP2mkbVjdUi29gpqOYupnv7\nj0jbtTW9+PBQYWNNKVVbhUPP4xSRXFBaFRl86cKLn7dysJHWim/p5rUvG9w2IxQI\ncxp9OkR1/+rO4taXSEZzXnLLruEwPu+Uqum4cVj0dTXLLDO/ANeiSyhvqQREqVvG\nnOyi8EofAgMBAAECggEAEy80bUrPeKr4H9mjThHtP6t2+CznbkdfeKvVvMSmZAsI\nyXUFWbJ4xq9hIs8O9g1jCGFWFtCstSQHO80tWRVZ9rWB00/xxfl0nRzbvbg850Dj\nfzjHH0toKxUilmGdVDQodG/pbCO+RQ6EnClmuk3gBp/8QoYnBuSlfHfQeW8vmg5w\nHB3XIkomI4u0bsYGJusQYquJSxPsIN5fUWLqGQQGdY/wbj9zkt20yIv+r/DMSq3o\nbEcHhr42FCTbeKQuxxQGoWnSHdJgbuYgW/NDu8kEIona+TluS8DU65N0Y8vzgZSu\nVY0eKF+TBAbHwhRMa+XDzTAiyrVOMp2dQISrarOaeQKBgQD0DsJLz8ANN3h8fsbv\nZ708Ph4G5V1eNMc3i3cn3zL4JyGg3V7sFa2ENjLfu0hnICPiRyiDVvQ/pMB8kcDl\nF0rbnQP1R3B1q3Bh7Tm8JuB4i/+BdghbpFjOkN7wEgDF3aP/n7jKfjfhYhkRndzy\nVsP1yrEjLcZ562wVgD2bx1TcBwKBgQC1JIuGeWGuSOVQr488ChqsfQPcvkiR/LPj\nT2cRrPMPYfpZlkgcc4x/DNtJn38MnDMQaYxoF/A+RReJ3v8zrHYA3c8ywgvFk3yN\n2efSBRlmPXE/Tr9jDLR6LG51RFBD4aOtnWAeycjUApsE8KuFi4jKdfmyvJStMoO6\nIWJcFEVLKQKBgDnWQY9LxXycV65RMP3NPNhI9D64Hl9T7J4qK+vEBkUuqNaBf5w9\nKui5G2dP78GYqUhXiq9NbQakGYWr2OWxlmjjFewLqQgJv9FFMbh4EhwfOUbJ3QMy\nuGUDigGkkpBRjSroBBfgv4dnAv/cxF6d10Spaz8l+vIrq2qRAIipPWADAoGAKNZ3\nWjbNTdSDVmBuA1Qn1VFN6JtBkyAMkieZjgOWvJYTMdVOppNqTk5gtcVuiDJC1OVm\n0STsda1v9BZBJK4x4FohV0kmDEIG55gDynZ51nHtsR8YyMTZf126/VcMXXFmTELZ\no7dMPnfj6QY1NSNTEInuZFxdjHqB9hmGqkmroZkCgYAjetkK6uj6eI01HxEhtTAx\nW/cWT3s/X7rshJUKUYBTExahxq/1fAzmJLqQuvV0KxcgG84qD5b/XZciddIzZPls\nKF4quZF/G3yNqAuJoHk2BPRxmu0QTGulSmdfWv/2dFhQpTsq/9EJ+gyEwxcGKhqx\nhohEKG7wgqoi5WaFxobBew==\n-----END PRIVATE KEY-----\n",
+  "client_email": "gadexpbot@gadgetexpressbot-sdn9.iam.gserviceaccount.com",
+  "client_id": "109855039018649523994",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/gadexpbot%40gadgetexpressbot-sdn9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

@@ -5,6 +5,7 @@ import 'package:gadget_express/Pages/registration.dart';
 import 'package:gadget_express/components/cart_provider.dart';
 import 'package:gadget_express/home.dart';
 
+
 class MyStatefulWidget extends StatefulWidget {
   final CartManager? cartManager;
 
@@ -96,7 +97,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         showErrorDialog(context, 'Invalid username or password');
                       }
                     });
-                        }),
+                  }),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -120,14 +121,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           ],
         ));
   }
-}
-bool validateLogin() {
-  // Replace with your own login validation logic
-  const username = 'vbk';
-  const password = 'gadexp';
-  final enteredUsername = (find.byKey(Key('username_field')).evaluate().first.widget as TextField).controller?.text;
-  final enteredPassword = (find.byKey(Key('password_field')).evaluate().first.widget as TextField).controller?.text;
-  return (enteredUsername == username && enteredPassword == password);
 }
 Future<bool> isValidLogin({required String enteredUsername, required String enteredPassword}) {
   // Query Firestore to check if the entered username and password match any user record
@@ -163,4 +156,3 @@ void showErrorDialog(BuildContext context, String message) {
     },
   );
 }
-

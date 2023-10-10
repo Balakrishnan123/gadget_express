@@ -33,4 +33,12 @@ class CartManager extends ChangeNotifier {
       }
     }
   }
+  double calculateTotal() {
+    double total = 0;
+    for (var item in _cartItems) {
+      total += (item['price'] ?? 0.0) * (item['quantity'] ?? 1);
+    }
+    return total;
+  }
+
 }

@@ -52,17 +52,10 @@ class _CartProductsState extends State<CartProducts> {
     }
     _totalPrice = totalPrice;
 
-    // Call the callback function with the updated _totalPrice
     widget.onTotalPriceChanged(_totalPrice);
-   // print('Total is$_totalPrice');
+
   }
 
- // void _updateQuantity(int index, int newQuantity) {
- //   setState(() {
- //     ProductsCart[index]["quantity"] = newQuantity;
- //   });
- //   _calculateTotalPrice();
- // }
 
   void _increaseQuantity(int index) {
     widget.cartManager?.increaseQuantity(index);
@@ -73,10 +66,6 @@ class _CartProductsState extends State<CartProducts> {
     widget.cartManager?.decreaseQuantity(index);
     _calculateTotalPrice();
   }
- // void _addToCart(Map<String, dynamic> product) {
- //   widget.cartManager?.addToCart(product); // Add the product to the cart
- // }
-
 
   @override
   Widget build(BuildContext context) {
